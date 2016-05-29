@@ -108,7 +108,7 @@ The initial release of this software (v1.0) was written by Frederick McCollum un
 
 ## License
 
-Copyright 2016 Matthew Hirn, Stéphane Mallat, Nicolas Poilvert
+Copyright 2016 Ariel Herbert-Voss, Matthew Hirn, Frederick McCollum
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
