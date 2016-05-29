@@ -1,5 +1,5 @@
 # C-1-1-Interpolation
-Computes optimal *C^{1,1}(R^d)* interpolations in any dimension *d*
+Computes optimal *C^{1,1}(R^d)* interpolations in any dimension *d*.
 
 ## Overview
 
