@@ -64,6 +64,7 @@ Another? (1:Yes, 0:No) 0
 Alternately, to compute the interpolant for many query points (stored in a matrix X), do the following:
 ```matlab
 >> [g, sE, P, PD, Sc, dSc, Cells] = cellcomplexdD(E, F, D);
+>> [Fx, DxF, Index] = queryWorkdD(X, g, sE, P, PD, Sc, dSc, Cells);
 ```
 
 To check that the initial points are correctly interpolated (within the machine precision), let X = E.
