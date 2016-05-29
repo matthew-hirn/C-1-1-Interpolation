@@ -12,6 +12,10 @@ The software is based upon the paper "Computing minimal interpolants in C^{1,1}(
 
 ## Installation
 
+The folder C-1-1-Interpolation can be saved to any location. In Matlab, add to the path the folder C-1-1-Interpolation.
+
+Check the releases tab to get release versions of the software and to see major updates.
+
 ## Using the Software
 
 The function EFD can be used to generate uniformly distributed pseudorandom input: data points (E), function values (F), and partial derivatives (D). For 20 initial points in R^2, use the following command:
@@ -93,3 +97,19 @@ In this example, the initial points are in R^2, so we can run gridMesh to visual
 ```matlab
 >> gridMesh
 ```
+
+## Authors
+
+The underlying mathematics for this software was developed by Ariel Herbert-Voss, Matthew Hirn, and Frederick McCollum.
+
+The initial release of this software (v1.0) was written by Frederick McCollum under the supervision of Matthew Hirn. Subsequent releases were written by Matthew Hirn and Frederick McCollum. Correspondence should be sent to Matthew Hirn at mhirn@msu.edu.
+
+## License
+
+Copyright 2016 Matthew Hirn, Stéphane Mallat, Nicolas Poilvert
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
