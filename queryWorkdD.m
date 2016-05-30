@@ -16,10 +16,10 @@ function [Fx, DxF, Index] = queryWorkdD(X, g, sE, P, PD, Sc, dSc, Cells)
 %
 % This file is part of the C^{1,1}(R^d) Interpolation software package.
 %
-% Author: Frederick McCollum
-% Email: frederick.mccollum@nyu.edu
+% Author: Frederick McCollum and Matthew Hirn
+% Email: frederick.mccollum@nyu.edu, mhirn@msu.edu
 %
-% Copyright 2016 Frederick McCollum
+% Copyright 2016 Frederick McCollum, Matthew Hirn
 % 
 % Licensed under the Apache License, Version 2.0 (the "License");
 % you may not use this file except in compliance with the License.
@@ -33,6 +33,7 @@ function [Fx, DxF, Index] = queryWorkdD(X, g, sE, P, PD, Sc, dSc, Cells)
 % See the License for the specific language governing permissions and
 % limitations under the License.
 
+
 [mX, nX] = size(X);
 mCells = size(Cells,1);
 Fx = zeros(mX,1);
@@ -41,6 +42,7 @@ Index = zeros(mX,1);
 test = NaN(mX, mCells);
 
 for i=1:mX
+        
     x = X(i,:);
     index = 0;
     
@@ -90,12 +92,18 @@ for i=1:mX
         V = bsxfun(@minus, tp(1,:), tp(2:end,:));
         W = bsxfun(@minus, pdp(1,:), pdp(2:end,:));
         
+        % Orthogonalize V (to make computations more stable)
+        r = rank(V);
+        [Q,~,~] = qr(V',0);
+        V = Q(:,1:r)';
+        
         % need to extract linearly independent rows of W
         % need this many: nX - size(V) + 1
+        % Orthogonalize W (to make computations more stable)
         r = rank(W);
-        [~, ~, E] = qr(W',0);
-        W = W(E(1:r),:);
-        
+        [Q,~,~] = qr(W',0);
+        W = Q(:,1:r)';
+     
         Ahy = zeros(size(V,1));
         bhy = zeros(size(V,1),1);
         for j=1:size(V,1)
