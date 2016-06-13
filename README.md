@@ -32,38 +32,59 @@ Enter function values: F
 Enter partial derivatives: D
 ```
 
-The computer then performs the one-time work, computing Wells' cell complex. In this example, the number 95 indicates that there are 95 cells in the final cell complex.
+The computer then performs the one-time work, computing Wells' cell complex. In this example, the power diagram has 99 faces, meaning there are 99 cells in the final cell complex.
 ```matlab
 Computing Gamma
-Elapsed time is 0.007851 seconds.
-Gamma = 2784.4731
+Elapsed time is 0.0015426 seconds.
+Gamma = 1451.8317
+
+Shift points
+Elapsed time is 1.9908e-05 seconds.
+
+Lift points
+Elapsed time is 0.00010622 seconds.
+
+Compute convex hull of lifted points
+Elapsed time is 0.00030862 seconds.
+
+Determine lower hull and get triangulation
+Elapsed time is 0.0014245 seconds.
+
+Compute all faces of the triangulation
+Elapsed time is 0.006688 seconds.
+
+Determine which facets of the triangulation are on the exterior
+Elapsed time is 0.0001249 seconds.
+
 Finding power diagram
-Elapsed time is 0.010667 seconds.
-    95
+Elapsed time is 0.0031662 seconds.
+Total number of faces: 95
+
 Finding points on infinite edges of PD
-Finding pieces S of cell complex
-dim(S) = 0
-dim(S) = 1:d-1
-     1
-dim(S) = d
-Elapsed time is 0.172720 seconds.
+Elapsed time is 0.0089396 seconds.
+
+Finding cells T_S of cell complex
+num(S) = 1
+num(S) = 2
+num(S) = 3
+Elapsed time is 0.030267 seconds.
 ```
 
 Next, the user is prompted to enter a query point, x. The value of the interpolant at x is displayed, along with the gradient at x. 
 ```matlab
 Enter query point x: [0,0]
 Performing query work
-Elapsed time is 0.000993 seconds.
+Elapsed time is 0.002037 seconds.
  
-F(x) = 222.88
-DxF = -949.2244     -581.7292
+F(x) = 67.3251
+DxF = -129.6883     -422.2365
  
 Another? (1:Yes, 0:No) 0
 ```
 
 Alternately, to compute the interpolant for many query points (stored in a matrix X), do the following:
 ```matlab
->> [g, sE, P, PD, Sc, dSc, Cells] = cellcomplexdD(E, F, D);
+>> [g, sE, P, PD, Sc, dSc, Cells, t] = cellcomplexdD(E, F, D);
 >> [Fx, DxF, Index] = queryWorkdD(X, g, sE, P, PD, Sc, dSc, Cells);
 ```
 
@@ -73,26 +94,29 @@ To check that the initial points are correctly interpolated (within the machine 
 >> [Fx, DxF, Index] = queryWorkdD(X, g, sE, P, PD, Sc, dSc, Cells);
 >> F - Fx
 ans =
-            0
-            0
-   4.1633e-17
-  -1.1102e-16
-            0
-  -1.1102e-16
-            0
-            0
-  -5.5511e-17
-  -1.1102e-16
-   5.5511e-17
-  -1.1102e-16
-  -1.1102e-16
-            0
-            0
-  -1.1102e-16
-            0
-            0
-  -5.5511e-17
-  -5.5511e-17
+
+   1.0e-15 *
+
+         0
+         0
+    0.0555
+    0.0555
+   -0.1110
+    0.1110
+         0
+    0.1110
+         0
+         0
+    0.1110
+    0.0278
+    0.0278
+         0
+   -0.1110
+         0
+         0
+   -0.0347
+    0.1110
+    0.0555
 ```
 
 In this example, the initial points are in R^2, so we can run gridMesh to visualize the interpolant. gridMesh computes the interpolant on a grid and displays the following: a shaded surface plot of the interpolant colored by height, a mesh plot of the interpolant colored by cell, a surface plot of the x partial derivative colored by height, and a surface plot of the x partial derivative colored by cell.
