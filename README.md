@@ -32,7 +32,7 @@ Enter function values: F
 Enter partial derivatives: D
 ```
 
-The computer then performs the one-time work, computing Wells' cell complex. In this example, the power diagram has 99 faces, meaning there are 99 cells in the final cell complex.
+The computer then performs the one-time work, computing Wells' cell complex. In this example, the power diagram has 95 faces, meaning there are 95 cells in the final cell complex.
 ```matlab
 Computing Gamma
 Elapsed time is 0.0015426 seconds.
